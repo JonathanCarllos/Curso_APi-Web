@@ -1,0 +1,61 @@
+﻿@model VShop.Web.Models.ProductViewModel
+
+<div class="container mt-4">
+    <h2 class="text-primary mb-4">Create a New Product</h2>
+
+    <form asp-action="CreateProduct">
+        <div asp-validation-summary="All" class="alert alert-danger" role="alert"></div>
+        <div class="row">           
+            <div class="form-group col-md-6">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter product name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>         
+            <div class="form-group col-md-6">
+                <label asp-for="ImagemUrl" class="form-label"></label>
+                <input asp-for="ImagemUrl" class="form-control" placeholder="Enter image URL" />
+                <span asp-validation-for="ImagemUrl" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="form-group col-md-12">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter product description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mt-3">           
+            <div class="form-group col-md-6">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" asp-format="{0:N2}" class="form-control" placeholder="Enter product price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Stock" class="form-label"></label>
+                <input asp-for="Stock" class="form-control" placeholder="Enter stock quantity" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mt-3">           
+            <div class="form-group col-md-6">
+                <label asp-for="CategoryId" class="form-label"></label>
+                <select asp-for="CategoryId" class="form-select" asp-items="@ViewBag.CategoryId">
+                    <option value="">Select a category</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12 text-end">
+                <button type="submit" class="btn btn-success">
+                    <span class="fas fa-check"></span> Create
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <span class="fas fa-arrow-left"></span> Back to List
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
